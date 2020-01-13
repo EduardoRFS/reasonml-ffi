@@ -1,0 +1,45 @@
+{
+  "name": "learning-ffi",
+  "version": "0.1.0",
+  "description": "Starter Reason Esy Pesy Project",
+  "esy": {
+    "build": "refmterr dune build -p #{self.name}",
+    "NOTE": "Optional release Section. Customizes result of `esy release`",
+    "release": { "releasedBinaries": [ "LearningFfiApp.exe" ] },
+    "buildEnv": { "ODOC_SYNTAX": "re" }
+  },
+  "buildDirs": {
+    "bin": {
+      "imports": ["FFI = require('learning-ffi/ffi')"],
+      "bin": { "LearningFfiApp.exe": "LearningFfiApp.re" }
+    },
+    "ffi": {
+      "cNames": ["user"],
+      "require": [ "console/lib", "pastel/lib", "ctypes", "ctypes.foreign" ]
+    }
+  },
+  "scripts": {
+    "start": "esy x LearningFfiApp.exe",
+    "test": "esy x RunLearningFfiTests.exe",
+    "doc": "esy dune build @doc",
+    "doc-path": "esy echo #{self.target_dir}/default/_doc/_html/index.html"
+  },
+  "dependencies": {
+    "@esy-ocaml/reason": "*",
+    "@opam/ctypes": "0.16.0",
+    "@opam/ctypes-foreign": "0.4.0",
+    "@opam/dune": "*",
+    "@opam/ppx_cstubs": "0.2.1",
+    "@reason-native/console": "*",
+    "@reason-native/pastel": "*",
+    "@reason-native/rely": "*",
+    "ocaml": "~4.7.0",
+    "refmterr": "*"
+  },
+  "devDependencies": {
+    "@opam/merlin": "*",
+    "ocaml": "~4.7.0",
+    "@opam/odoc": "*",
+    "@pesy/esy-pesy": "0.1.0-alpha.2"
+  }
+}

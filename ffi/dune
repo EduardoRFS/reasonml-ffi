@@ -1,0 +1,3 @@
+(library (name LearningFfiFfi) (public_name learning-ffi.ffi)
+    (modules (:standard))
+    (libraries console.lib pastel.lib ctypes ctypes.foreign) (c_names user))

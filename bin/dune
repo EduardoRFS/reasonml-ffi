@@ -1,0 +1,11 @@
+(executable (name LearningFfiApp)
+    (modules (:standard \ LearningFfiBinPesyModules))
+    (public_name LearningFfiApp.exe)
+    (libraries learning-ffi.bin.pesy-modules)
+    (flags -open LearningFfiBinPesyModules))
+(library (public_name learning-ffi.bin.pesy-modules)
+    (name LearningFfiBinPesyModules) (modules LearningFfiBinPesyModules)
+    (libraries learning-ffi.ffi))
+(rule
+    (with-stdout-to LearningFfiBinPesyModules.re
+        (run echo "module FFI = LearningFfiFfi;")))
