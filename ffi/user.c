@@ -3,7 +3,7 @@
 #include "user.h"
 
 User * create_user(int id, char *name) {
-  User *user = calloc(sizeof(User), 1);
+  User *user = calloc(1, sizeof(User));
   user->id = id;
   user->name = name;
   return user;
